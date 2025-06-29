@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export default function UserLayout({
@@ -9,6 +10,7 @@ export default function UserLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
   return (
     <div className="relative flex flex-col h-screen p-4 items-center"
     style={{
@@ -33,7 +35,7 @@ export default function UserLayout({
         </Button>
 
         {/* Logo 容器 */}
-        <div className="relative z-10 w-full max-w-sm mx-auto flex justify-center pt-8 top-50">
+        <div className="relative z-10 w-full max-w-sm mx-auto flex justify-center pt-8 top-[20vh]">
             <Image
                 src="/logo.png"
                 alt="Gate Icon"
@@ -45,12 +47,12 @@ export default function UserLayout({
 
         {/* 登录/注册容器 - 固定在视口底部 */}
         <div className="fixed bottom-[-20] left-4 right-4 z-10 max-w-sm mx-auto">
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-2xl h-150 overflow-clip items-center ">
+            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-2xl h-[60vh] overflow-clip items-center ">
                 {/* 顶部选项卡 */}
                 <div className="flex bg-white/20 backdrop-blur-sm items-center">
-                    <TabButton href="/login" label="登录" />
+                    <TabButton href="/login" label="登录" isActive={pathname === "/login"} />
                     <div className="opacity-80">|</div>
-                    <TabButton href="/register" label="注册" />
+                    <TabButton href="/register" label="注册" isActive={pathname === "/register"} />
                 </div>
 
                 {/* 内容区域 */}
@@ -63,10 +65,14 @@ export default function UserLayout({
   );
 }
 
-function TabButton({ href, label }: { href: string; label: string }) {
+function TabButton({ href, label, isActive }: { href: string; label: string; isActive: boolean }) {
   return (
     <Link href={href} className="flex-1">
-      <div className="py-4 text-center text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 text-lg font-medium">
+      <div className={`py-4 text-center transition-all duration-200 font-medium ${
+        isActive
+          ? "text-white text-3xl"
+          : "text-white/30 text-2xl"
+      }`}>
         {label}
       </div>
     </Link>

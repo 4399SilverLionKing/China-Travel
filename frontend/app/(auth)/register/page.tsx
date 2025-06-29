@@ -81,7 +81,7 @@ export default function RegisterPage() {
 
       // 延迟一下再跳转，让用户看到成功提示
       setTimeout(() => {
-        router.push("/user");
+        router.push("/login");
       }, 1000);
     } catch (error) {
       console.error("注册失败:", error);

@@ -112,7 +112,7 @@ export default function UserPage() {
 
           {/* 忘记密码链接 */}
           <div className="flex justify-between items-center text-sm">
-            <Link href="/user/refind" className="text-white/80 hover:text-white">
+            <Link href="/refind" className="text-white/80 hover:text-white">
               忘记密码？
             </Link>
           </div>
