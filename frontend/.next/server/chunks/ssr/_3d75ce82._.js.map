@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Admin/Desktop/China-Travel/frontend/app/user/page.tsx"],"sourcesContent":["export default function Error() {\r\n  return (\r\n    <div className=\"text-center\">\r\n      <h1>Login</h1>\r\n    </div>\r\n  );\r\n}"],"names":[],"mappings":";;;;;AAAe,SAAS;IACtB,qBACE,6WAAC;QAAI,WAAU;kBACb,cAAA,6WAAC;sBAAG;;;;;;;;;;;AAGV","debugId":null}}]
-}

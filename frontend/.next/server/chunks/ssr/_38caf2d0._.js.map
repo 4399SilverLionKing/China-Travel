@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Admin/Desktop/China-Travel/frontend/app/page.tsx"],"sourcesContent":["import { Button } from \"@/components/ui/button\"\nimport Link from \"next/link\";\n\nexport default function Home() {\n  return (\n    <Button asChild>\n      <Link href=\"/user\">Login</Link>\n    </Button>\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,qBACE,6WAAC,2HAAA,CAAA,SAAM;QAAC,OAAO;kBACb,cAAA,6WAAC,2RAAA,CAAA,UAAI;YAAC,MAAK;sBAAQ;;;;;;;;;;;AAGzB","debugId":null}}]
-}
