@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Admin/Desktop/China-Travel/frontend/app/user/layout.tsx"],"sourcesContent":["import { Button } from \"@/components/ui/button\";\r\nimport Image from \"next/image\";\r\n\r\nexport default function UserLayout({\r\n  children,\r\n}: Readonly<{\r\n  children: React.ReactNode;\r\n}>) {\r\n  return (\r\n    <div className=\"mt-100 flex-col justify-center items-center\">\r\n        {/* icon */}\r\n        <div>\r\n            <img src=\"@/public/gate.png\"></img>\r\n        </div>\r\n        {/* select */}\r\n        <div className=\"flex justify-center m-5 gap-5 items-center\">\r\n            <Button variant=\"outline\">登录</Button>\r\n            <span className=\"opacity-50\">|</span>\r\n            <Button variant=\"outline\">注册</Button>\r\n        </div>\r\n        {/* child */}\r\n        <div></div>\r\n\r\n    </div>\r\n  );\r\n}"],"names":[],"mappings":";;;;AAAA;;;AAGe,SAAS,WAAW,EACjC,QAAQ,EAGR;IACA,qBACE,6WAAC;QAAI,WAAU;;0BAEX,6WAAC;0BACG,cAAA,6WAAC;oBAAI,KAAI;;;;;;;;;;;0BAGb,6WAAC;gBAAI,WAAU;;kCACX,6WAAC,2HAAA,CAAA,SAAM;wBAAC,SAAQ;kCAAU;;;;;;kCAC1B,6WAAC;wBAAK,WAAU;kCAAa;;;;;;kCAC7B,6WAAC,2HAAA,CAAA,SAAM;wBAAC,SAAQ;kCAAU;;;;;;;;;;;;0BAG9B,6WAAC;;;;;;;;;;;AAIT","debugId":null}}]
+}
