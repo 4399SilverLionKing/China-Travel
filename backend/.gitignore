@@ -1,0 +1,27 @@
+# 构建输出
+/target/
+/build/
+
+# Maven
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build-tool-versions.txt
+
+# NetBeans (如果使用)
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# IntelliJ IDEA 临时文件
+!/.idea/misc.xml
+!/.idea/compiler.xml
+!/.idea/jarRepositories.xml
+!/.idea/encodings.xml
+!/.idea/vcs.xml

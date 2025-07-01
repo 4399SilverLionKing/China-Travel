@@ -1,0 +1,30 @@
+# 依赖
+/node_modules
+/.pnp
+.pnp.js
+.pnp.*
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# 构建输出和缓存
+/build/
+/dist/
+/out/
+.next/
+.vite-ssg-dist
+.vite-ssg-temp
+
+# 测试
+/coverage
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel
+.vercel
