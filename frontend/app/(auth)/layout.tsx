@@ -46,7 +46,7 @@ export default function UserLayout({
         </div>
 
         {/* 登录/注册容器 - 固定在视口底部 */}
-        <div className="fixed bottom-[-20] left-4 right-4 z-10 max-w-sm mx-auto">
+        <div className="fixed bottom-[-10] left-4 right-4 z-10 max-w-sm mx-auto">
             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-2xl h-[60vh] overflow-clip items-center ">
                 {/* 顶部选项卡 */}
                 <div className="flex bg-white/20 backdrop-blur-sm items-center">
