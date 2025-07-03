@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas.chat import ChatRequest, ChatResponse, ErrorResponse
+from app.schemas.chat import ChatRequest, ChatResponse
 from app.service.agent import agent_executor_instance
 import logging
 
@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 router = APIRouter()
 
-@router.post("/chat", response_model=ChatResponse, responses={400: {"model": ErrorResponse}, 500: {"model": ErrorResponse}})
+@router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """
     智能助手聊天接口

@@ -3,6 +3,7 @@ from typing import Optional
 
 # 定义请求模型
 class ChatRequest(BaseModel):
+    session_id: str
     input: str
 
 # 定义响应模型

@@ -16,6 +16,9 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import { login as loginApi } from "@/lib/api/java/auth";
+import { ApiError } from "@/lib/types/common";
+import { useAuth } from "@/lib/contexts/auth-context";
 
 // 定义表单验证模式
 const loginSchema = z.object({
@@ -34,6 +37,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 export default function UserPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -47,14 +51,21 @@ export default function UserPage() {
     setIsLoading(true);
 
     try {
-      // 这里可以添加实际的登录API调用
-      console.log("登录数据:", data);
+      // 调用登录API
+      const response = await loginApi({
+        username: data.username,
+        password: data.password,
+      });
 
-      // 模拟API调用延迟
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // 使用认证上下文保存用户信息
+      login({
+        username: response.data.username,
+        token: response.data.token,
+      });
 
-      // 先显示成功提示
+      // 显示成功提示
       toast.success("登录成功", {
+        description: `欢迎回来，${response.data.username}！`,
         duration: 2000,
       });
 
@@ -62,7 +73,19 @@ export default function UserPage() {
       router.push("/");
     } catch (error) {
       console.error("登录失败:", error);
-      // 这里可以添加错误处理，比如显示错误消息
+
+      // 处理API错误
+      if (error && typeof error === 'object' && 'message' in error) {
+        toast.error("登录失败", {
+          description: (error as ApiError).message,
+          duration: 3000,
+        });
+      } else {
+        toast.error("登录失败", {
+          description: "网络连接异常，请稍后重试",
+          duration: 3000,
+        });
+      }
     } finally {
       setIsLoading(false);
     }

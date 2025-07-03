@@ -17,6 +17,8 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import { register } from "@/lib/api/java/auth";
+import { ApiError } from "@/lib/types/common";
 
 // 定义注册表单验证模式
 const registerSchema = z.object({
@@ -67,25 +69,39 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // 这里可以添加实际的注册API调用
-      console.log("注册数据:", data);
+      // 调用注册API
+      const response = await register({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        role: "USER", // 默认角色为普通用户
+      });
 
-      // 模拟API调用延迟
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // 先显示成功提示
+      // 显示成功提示
       toast.success("注册成功", {
-        description: "欢迎加入旅游·中国！",
-        duration: 2000,
+        description: response.message || "欢迎加入旅游·中国！请登录您的账户。",
+        duration: 3000,
       });
 
       // 延迟一下再跳转，让用户看到成功提示
       setTimeout(() => {
         router.push("/login");
-      }, 1000);
+      }, 1500);
     } catch (error) {
       console.error("注册失败:", error);
-      // 这里可以添加错误处理，比如显示错误消息
+
+      // 处理API错误
+      if (error && typeof error === 'object' && 'message' in error) {
+        toast.error("注册失败", {
+          description: (error as ApiError).message,
+          duration: 3000,
+        });
+      } else {
+        toast.error("注册失败", {
+          description: "网络连接异常，请稍后重试",
+          duration: 3000,
+        });
+      }
     } finally {
       setIsLoading(false);
     }
