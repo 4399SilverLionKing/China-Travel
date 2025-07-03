@@ -5,9 +5,7 @@ import { Search, MapPin, Menu, Navigation, Cloud, Route } from 'lucide-react';
 import {
   Drawer,
   DrawerContent,
-  DrawerHeader,
   DrawerTitle,
-  DrawerDescription,
 } from '@/components/ui/drawer';
 import { PlanContent } from '@/components/plan';
 import { PositionContent } from '@/components/positon';
@@ -252,7 +250,7 @@ export default function Home() {
   return (
     <div className="h-full flex flex-col w-full">
       {/* 搜索栏 */}
-      <div className="relative z-10 p-4 bg-white shadow-sm w-full">
+      <div className="relative z-10 p-4 bg-white shadow-sm w-full rounded-b-2xl">
         {/* 菜单按钮 - 绝对定位在左侧 */}
         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 menu-container">
           <button

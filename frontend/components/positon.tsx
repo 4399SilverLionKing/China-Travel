@@ -1,6 +1,6 @@
 "use client";
 
-import { Navigation, MapPin, Compass, MessageCircle, Loader2, RefreshCw } from "lucide-react";
+import { Navigation, Loader2} from "lucide-react";
 import { useState, useEffect } from "react";
 import { sendChatMessage, generateSessionId } from "@/lib/api/python/chat";
 
@@ -17,7 +17,6 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
   } | null>(null);
   const [locationIntroduction, setLocationIntroduction] = useState<string>("");
   const [isLoadingIntroduction, setIsLoadingIntroduction] = useState(false);
-  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
   const [sessionId] = useState(() => generateSessionId());
 
   // 获取地址信息
@@ -50,8 +49,6 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
     } catch (error) {
       console.error("获取位置介绍失败:", error);
       setLocationIntroduction("抱歉，无法获取该位置的介绍信息。");
-    } finally {
-      setIsLoadingIntroduction(false);
     }
   };
 
@@ -62,7 +59,6 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
       return;
     }
 
-    setIsLoadingLocation(true);
     setLocationIntroduction("");
 
     try {
@@ -86,8 +82,6 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
       }
     } catch (error) {
       console.error("获取地图中心位置失败:", error);
-    } finally {
-      setIsLoadingLocation(false);
     }
   };
 
