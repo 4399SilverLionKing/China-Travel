@@ -28,3 +28,10 @@ next-env.d.ts
 
 # Vercel
 .vercel
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
