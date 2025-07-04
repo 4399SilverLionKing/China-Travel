@@ -380,7 +380,7 @@ export default function Home() {
           {activeDrawer === 'position' && '位置介绍'}
           {activeDrawer === 'weather' && '天气预报'}
         </DrawerTitle>
-        <DrawerContent className='h-[80vh]'>
+        <DrawerContent className='h-[60vh]'>
           {activeDrawer === 'plan' && <PlanContent onPlanSubmit={handlePlanSubmit} />}
           {activeDrawer === 'position' && <PositionContent map={map} AMap={AMap} />}
           {activeDrawer === 'weather' && <WeatherContent map={map} AMap={AMap} />}

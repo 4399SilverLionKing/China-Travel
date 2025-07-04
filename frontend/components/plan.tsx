@@ -136,17 +136,13 @@ export function PlanContent({ onPlanSubmit }: PlanContentProps) {
             <Clock className="w-5 h-5 text-orange-500" />
             <span className="font-medium">出行方式</span>
           </div>
-          <select
+          <input
+            type="text"
+            placeholder="请选择出行方式"
             value={formData.travelMode}
             onChange={(e) => handleInputChange('travelMode', e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">请选择出行方式</option>
-            <option value="driving">驾车</option>
-            <option value="walking">步行</option>
-            <option value="transit">公交</option>
-            <option value="cycling">骑行</option>
-          </select>
+          />
         </div>
 
         <div className="bg-gray-50 rounded-lg p-4">

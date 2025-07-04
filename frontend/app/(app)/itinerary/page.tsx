@@ -139,7 +139,7 @@ export default function ItineraryHistoryPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 ">
         {historyItems.length === 0 ? (
           // 空状态
           <div className="flex flex-col items-center justify-center h-full text-gray-500">
@@ -156,7 +156,7 @@ export default function ItineraryHistoryPage() {
           </div>
         ) : (
           // 历史记录列表
-          <div className="p-4 overflow-y-auto custom-scrollbar">
+          <div className="p-4 h-[85vh] overflow-y-auto custom-scrollbar">
             <div className="space-y-4">
               {historyItems.map((item) => (
                 <div
