@@ -6,7 +6,7 @@ spring:
       host: 192.168.12.128 # TODO
       port: 6379
       password: 123456 # TODO
-      database: 0
+      database: 2
       lettuce:
         pool:
           enabled: true

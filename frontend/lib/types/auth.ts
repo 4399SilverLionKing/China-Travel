@@ -2,6 +2,7 @@
 
 // 登录请求类型
 export interface LoginRequest {
+  userId: number;
   username: string;
   password: string;
 }
@@ -11,6 +12,7 @@ export interface LoginResponse {
   code: number;
   message: string;
   data: {
+    userId: number;
     username: string;
     token: string;
   };

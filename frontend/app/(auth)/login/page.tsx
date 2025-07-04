@@ -59,6 +59,7 @@ export default function UserPage() {
 
       // 使用认证上下文保存用户信息
       login({
+        userId: response.data.userId,
         username: response.data.username,
         token: response.data.token,
       });

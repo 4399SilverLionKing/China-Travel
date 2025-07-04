@@ -11,8 +11,8 @@ import lombok.ToString;
 public class PageQuery {
 
     @Min(value = 1, message = "页码最小值为1")
-    private long pageIndex;
+    private int pageIndex;
 
     @Min(value = 1, message = "条数最小值为1")
-    private long pageSize;
+    private int pageSize;
 }

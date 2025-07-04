@@ -36,7 +36,7 @@ public class UserController {
 
         boolean res = userService.register(register);
 
-        if (Boolean.FALSE.equals(res)) return JsonVO.fail("注册失败!");
+        if (!res) return JsonVO.fail("注册失败!");
         return JsonVO.success("注册成功!");
     }
 }

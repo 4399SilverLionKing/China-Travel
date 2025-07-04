@@ -34,6 +34,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private final JwtUtil jwtUtil;
     private final UserMapper mapper;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     @Override
     public LoginVO login(LoginQuery query) {
@@ -49,11 +50,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 2. 认证成功，从 Authentication 对象中获取 UserDetails
         final UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        // 3. 生成JWT
+        // 3. 根据用户名查询完整的用户信息以获取用户ID
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", userDetails.getUsername());
+        User user = mapper.selectOne(queryWrapper);
+
+        // 4. 生成JWT
         final String token = jwtUtil.generateToken(userDetails);
 
-        // 4. 封装返回结果
+        // 5. 封装返回结果
         LoginVO loginVO = new LoginVO();
+        loginVO.setUserId(user.getUserId());
         loginVO.setUsername(userDetails.getUsername());
         loginVO.setToken(token);
 

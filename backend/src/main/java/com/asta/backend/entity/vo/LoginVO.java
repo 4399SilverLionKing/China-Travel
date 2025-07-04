@@ -9,6 +9,8 @@ import lombok.ToString;
 @ToString
 public class LoginVO {
 
+    private Integer userId;
+
     private String username;
 
     private String token;

@@ -17,6 +17,7 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
   } | null>(null);
   const [locationIntroduction, setLocationIntroduction] = useState<string>("");
   const [isLoadingIntroduction, setIsLoadingIntroduction] = useState(false);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
   const [sessionId] = useState(() => generateSessionId());
 
   // 获取地址信息
@@ -49,6 +50,8 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
     } catch (error) {
       console.error("获取位置介绍失败:", error);
       setLocationIntroduction("抱歉，无法获取该位置的介绍信息。");
+    } finally {
+      setIsLoadingIntroduction(false);
     }
   };
 
@@ -59,6 +62,7 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
       return;
     }
 
+    setIsLoadingLocation(true);
     setLocationIntroduction("");
 
     try {
@@ -82,6 +86,8 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
       }
     } catch (error) {
       console.error("获取地图中心位置失败:", error);
+    } finally {
+      setIsLoadingLocation(false);
     }
   };
 
@@ -106,16 +112,21 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
 
             {/* 位置介绍区域 */}
             <div className="bg-blue-50 rounded-lg p-4 space-y-3">
-              {isLoadingIntroduction ? (
-                <div className="flex items-center space-x-2 text-blue-600">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span className="text-sm">AI 正在为您生成位置介绍...</span>
-                </div>
-              ) : (
-                <div className="text-sm text-blue-800 leading-relaxed">
-                  {locationIntroduction}
-                </div>
-              )}
+                {isLoadingLocation ? (
+                    <div className="flex items-center space-x-2 text-blue-600">
+                    <span className="text-sm">正在获取地理信息</span>
+                    </div>
+                ):null}
+                {isLoadingIntroduction ? (
+                    <div className="flex items-center space-x-2 text-blue-600">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="text-sm">AI 正在为您生成位置介绍...</span>
+                    </div>
+                ) : (
+                    <div className="text-sm text-blue-800 leading-relaxed">
+                    {locationIntroduction}
+                    </div>
+                )}
             </div>
           </div>
         )}

@@ -10,6 +10,9 @@ import {
 import { PlanContent } from '@/components/plan';
 import { PositionContent } from '@/components/positon';
 import { WeatherContent } from '@/components/weather';
+import { ItineraryPlanData } from '@/lib/types/itinerary';
+import { useRouter } from 'next/navigation';
+import { useItinerary } from '@/lib/contexts/itinerary-context';
 
 // 高德地图API Key
 const AMAP_API_KEY = process.env.NEXT_PUBLIC_AMAP_API_KEY || '';
@@ -23,6 +26,8 @@ interface SearchResult {
 }
 
 export default function Home() {
+  const router = useRouter();
+  const { setItineraryData } = useItinerary();
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [AMap, setAMap] = useState<any>(null);
@@ -247,6 +252,14 @@ export default function Home() {
     setShowMenu(false);
   };
 
+  // 处理行程规划提交
+  const handlePlanSubmit = (data: ItineraryPlanData) => {
+    setItineraryData(data);
+    setActiveDrawer(null); // 关闭抽屉
+    // 跳转到行程规划页面，生成新的行程
+    router.push('/itinerary/plan');
+  };
+
   return (
     <div className="h-full flex flex-col w-full">
       {/* 搜索栏 */}
@@ -344,7 +357,7 @@ export default function Home() {
       </div>
 
       {/* 地图容器 */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative bottom-15">
         {isMapLoading && (
           <div className="absolute inset-0 bg-gray-100 flex items-center justify-center z-10">
             <div className="text-center">
@@ -367,8 +380,8 @@ export default function Home() {
           {activeDrawer === 'position' && '位置介绍'}
           {activeDrawer === 'weather' && '天气预报'}
         </DrawerTitle>
-        <DrawerContent>
-          {activeDrawer === 'plan' && <PlanContent />}
+        <DrawerContent className='h-[80vh]'>
+          {activeDrawer === 'plan' && <PlanContent onPlanSubmit={handlePlanSubmit} />}
           {activeDrawer === 'position' && <PositionContent map={map} AMap={AMap} />}
           {activeDrawer === 'weather' && <WeatherContent map={map} AMap={AMap} />}
         </DrawerContent>

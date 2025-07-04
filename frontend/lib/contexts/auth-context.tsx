@@ -1,10 +1,11 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { tokenUtils } from '@/lib/api/java/auth';
+import { tokenUtils } from '@/lib/utils/token';
 
 // 用户信息类型
 interface User {
+  userId: number;
   username: string;
   token: string;
 }
@@ -30,16 +31,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 初始化时检查本地存储的token
+  // 初始化时检查本地存储的用户信息
   useEffect(() => {
     const token = tokenUtils.getToken();
     if (token) {
-      // 这里可以调用API验证token的有效性
-      // 暂时假设token有效，实际项目中应该验证
-      setUser({
-        username: '', // 可以从token中解析或调用API获取
-        token,
-      });
+      // 尝试从localStorage获取完整的用户信息
+      const userStr = localStorage.getItem('user_info');
+      if (userStr) {
+        try {
+          const userData = JSON.parse(userStr);
+          if (userData.userId && userData.username && userData.token === token) {
+            setUser(userData);
+          } else {
+            // 如果用户信息不完整或token不匹配，清除存储
+            tokenUtils.removeToken();
+            localStorage.removeItem('user_info');
+          }
+        } catch (error) {
+          console.error('解析用户信息失败:', error);
+          tokenUtils.removeToken();
+          localStorage.removeItem('user_info');
+        }
+      } else {
+        // 如果有token但没有用户信息，清除token
+        tokenUtils.removeToken();
+      }
     }
     setIsLoading(false);
   }, []);
@@ -48,12 +64,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const login = (userData: User) => {
     setUser(userData);
     tokenUtils.saveToken(userData.token);
+    // 保存完整的用户信息到localStorage
+    localStorage.setItem('user_info', JSON.stringify(userData));
   };
 
   // 登出函数
   const logout = () => {
     setUser(null);
     tokenUtils.removeToken();
+    localStorage.removeItem('user_info');
   };
 
   // 是否已认证
