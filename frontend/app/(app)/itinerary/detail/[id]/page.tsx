@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowLeft, MapPin, Calendar, Route, Trash2 } from 'lucide-react';
+import { ArrowLeft, Calendar, Route, Trash2 } from 'lucide-react';
 import { ItineraryHistoryItem } from '@/lib/types/itinerary';
 import { getItineraryHistoryItem, removeItineraryFromHistory } from '@/lib/utils/itinerary-history';
 import { useAuthGuard, useCurrentUser } from '@/lib/hooks/useAuthGuard';

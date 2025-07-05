@@ -2,7 +2,6 @@
 
 // 登录请求类型
 export interface LoginRequest {
-  userId: number;
   username: string;
   password: string;
 }

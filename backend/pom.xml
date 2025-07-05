@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.asta</groupId>
-    <artifactId>backend</artifactId>
+    <artifactId>travel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>backend</description>
+    <name>travel</name>
+    <description>travel</description>
     <scm>
         <connection/>
         <developerConnection/>
@@ -163,10 +163,10 @@
                     <!-- Docker 远程管理地址 TODO-->
                     <dockerHost>https://60.204.203.236:2375</dockerHost>
                     <!-- CA 证书位置 TODO -->
-                    <certPath>D:\Docker\CA\</certPath>
+                    <certPath>D:\Docker\CA\berryai</certPath>
                     <images>
                         <image>
-                            <name>backend/${project.artifactId}:${project.version}</name>
+                            <name>travel/${project.artifactId}:${project.version}</name>
                             <build>
                                 <contextDir>${project.basedir}</contextDir>
                             </build>
@@ -174,7 +174,7 @@
                             <run>
                                 <namingStrategy>alias</namingStrategy>
                                 <ports>
-                                    <port>4444:4444</port>
+                                    <port>20000:20000</port>
                                 </ports>
                                 <volumes>
                                     <bind>

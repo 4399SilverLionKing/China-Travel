@@ -3,9 +3,9 @@ spring:
     name: backend
   data:
     redis:
-      host: 192.168.12.128 # TODO
+      host: 60.204.203.236 # TODO
       port: 6379
-      password: 123456 # TODO
+      password: 1263976832 # TODO
       database: 2
       lettuce:
         pool:
@@ -15,9 +15,9 @@ spring:
           min-idle: 2
           max-wait: -1ms
   datasource:
-    url: jdbc:mysql://192.168.12.128:3306/travel?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true # TODO
+    url: jdbc:mysql://60.204.203.236:3306/travel?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true # TODO
     username: root  # TODO
-    password: 123456  # TODO
+    password: 1263976832  # TODO
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -38,7 +38,7 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
 server:
-  port: 4444
+  port: 20000
 
 jwt:
   secret: 5468576D5A7134743777217A25432A462D4A614E645267556A586E3272357538
