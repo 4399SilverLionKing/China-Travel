@@ -3,7 +3,7 @@ import { ApiError } from '../../types/common';
 import { tokenUtils } from '../../utils/token';
 
 // API基础URL
-const API_BASE_URL = config.javaApiBaseUrl;
+const API_BASE_URL = config.javaApiBaseUrl || 'http://localhost:20000';
 
 // 通用的API请求函数
 export async function apiRequest<T>(

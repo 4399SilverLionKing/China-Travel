@@ -1,7 +1,7 @@
 import { config } from '../../config/env';
 
 // 聊天API基础URL
-const CHAT_API_BASE_URL = config.pthonApiBaseUrl;
+const CHAT_API_BASE_URL = config.pythonApiBaseUrl || 'http://localhost:20001';
 
 // 通用的聊天API请求函数
 export async function apiRequest<T>(

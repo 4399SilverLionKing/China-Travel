@@ -3,7 +3,7 @@ import { apiRequest } from './http';
 import { config } from '../../config/env';
 
 // 聊天API基础URL
-const CHAT_API_BASE_URL = config.pthonApiBaseUrl;
+const CHAT_API_BASE_URL = config.pythonApiBaseUrl || 'http://localhost:20001';
 
 // 发送聊天消息
 export async function sendChatMessage(
