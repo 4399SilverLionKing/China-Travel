@@ -32,6 +32,4 @@ yarn-error.log*
 *.swp
 
 # 敏感信息 (强烈建议忽略)
-.env*
-!.env.example
 *.pem
