@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/java/:path*",
+      "destination": "http://60.204.203.236:20000/:path*"
+    },
+    {
+      "source": "/python/:path*",
+      "destination": "http://60.204.203.236:20001/:path*"
+    }
+  ]
+}

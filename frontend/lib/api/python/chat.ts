@@ -2,8 +2,10 @@ import { ChatRequest, ChatResponse, StreamChunk, StreamCallbacks } from '../../t
 import { apiRequest } from './http';
 import { config } from '../../config/env';
 
-// 聊天API基础URL
-const CHAT_API_BASE_URL = config.pythonApiBaseUrl || 'http://localhost:20001';
+// 聊天API基础URL - 在生产环境使用虚拟前缀，开发环境直接使用后端地址
+const CHAT_API_BASE_URL = config.isDevelopment
+  ? (config.pythonApiBaseUrl || 'http://localhost:20001')
+  : '/python';
 
 // 发送聊天消息
 export async function sendChatMessage(

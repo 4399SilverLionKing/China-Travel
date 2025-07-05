@@ -2,8 +2,10 @@ import { config } from '../../config/env';
 import { ApiError } from '../../types/common';
 import { tokenUtils } from '../../utils/token';
 
-// API基础URL
-const API_BASE_URL = config.javaApiBaseUrl || 'http://localhost:20000';
+// API基础URL - 在生产环境使用虚拟前缀，开发环境直接使用后端地址
+const API_BASE_URL = config.isDevelopment
+  ? (config.javaApiBaseUrl || 'http://localhost:20000')
+  : '/java';
 
 // 通用的API请求函数
 export async function apiRequest<T>(
