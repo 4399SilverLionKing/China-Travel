@@ -120,17 +120,10 @@ export default function ItineraryHistoryPage() {
             <h1 className="text-xl font-bold">历史记录</h1>
           </div>
           <div className="flex items-center space-x-2">
-            <button
-              onClick={() => router.push('/')}
-              className="flex items-center space-x-2 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              <Plus className="w-4 h-4" />
-              <span>新建行程</span>
-            </button>
             {historyItems.length > 0 && (
               <button
                 onClick={handleClearAll}
-                className="px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                className="px-3 py-2 text-red-600 bg-red-50 rounded-lg transition-colors"
               >
                 清空全部
               </button>
