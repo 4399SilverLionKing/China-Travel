@@ -99,7 +99,7 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
   }, [map, AMap]);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 overflow-scroll h-[60vh]">
       <div className="text-center">
         <Navigation className="w-12 h-12 text-blue-500 mx-auto mb-4" />
         <h2 className="text-2xl font-bold text-gray-900 mb-2">位置介绍</h2>
@@ -108,10 +108,10 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
 
       <div className="space-y-4">
         {currentLocation && (
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-scroll">
 
             {/* 位置介绍区域 */}
-            <div className="bg-blue-50 rounded-lg p-4 space-y-3">
+            <div className="bg-blue-50 rounded-lg p-4 space-y-3 overflow-scroll">
                 {isLoadingLocation ? (
                     <div className="flex items-center space-x-2 text-blue-600">
                     <span className="text-sm">正在获取地理信息</span>
@@ -123,7 +123,7 @@ export function PositionContent({ map, AMap }: PositionContentProps) {
                     <span className="text-sm">AI 正在为您生成位置介绍...</span>
                     </div>
                 ) : (
-                    <div className="text-sm text-blue-800 leading-relaxed">
+                    <div className="text-sm text-blue-800 leading-relaxed overflow-y-scroll h-auto">
                     {locationIntroduction}
                     </div>
                 )}
