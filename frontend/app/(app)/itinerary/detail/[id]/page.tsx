@@ -40,6 +40,7 @@ export default function ItineraryDetailPage() {
     loadItem();
   }, [params.id, shouldRender, user, userId, username]);
 
+  // 删除记录
   const handleDelete = async () => {
     if (!user || !item) return;
 
